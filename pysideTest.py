@@ -18,10 +18,14 @@ class MainWindow(QMainWindow):
         self.setIDButton.clicked.connect(self.buttonClick)
         
     def buttonClick(self):
-        message_box = QMessageBox()
-        message_box.setWindowTitle ("bbb")
-        message_box.setInformativeText("aaa")
-        message_box.exec_() 
+        IDlineEditText = self.ui.IDlineEdit.text()
+        if(not IDlineEditText.isnumeric()):
+            message_box = QMessageBox()
+            message_box.setWindowTitle ("error")
+            message_box.setInformativeText("please enter a interger number")
+            message_box.exec_()
+        else:
+            self.ui.IDlabel.setText(IDlineEditText)
     
 if __name__ == "__main__":
     app = QApplication(sys.argv)
